@@ -4,6 +4,7 @@
     $http_verb = $_SERVER['REQUEST_METHOD'];
     
     $student_manager = new StudentManager();
+    echo 'get here';
 
     switch ($http_verb)
     {
@@ -30,6 +31,7 @@
             }
             else
             {
+                echo 'got here';
                 echo $student_manager->readAll();
             }
             

@@ -3,7 +3,7 @@
     
     $client = new GuzzleHttp\Client();
     
-    $url = "http://localhost/weeks/week10/webservices/student_service.php";
+    $url = "http://restapi.local/student_service.php";
     
     // Test StudentManager::readAll() by sending HTTP GET   
     try
