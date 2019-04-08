@@ -1,10 +1,9 @@
 <?php
-    require_once("../controller/StudentManager.php");
+    require("../controllers/StudentManager.php");
     
     $http_verb = $_SERVER['REQUEST_METHOD'];
     
     $student_manager = new StudentManager();
-    echo 'get here';
     
     switch ($http_verb) {
         case "POST":
@@ -24,7 +23,6 @@
             if (isset($_GET['id'])) {
                 echo $student_manager->readById($_GET['id']);
             } else {
-                echo 'got here';
                 echo $student_manager->readAll();
             }
             
