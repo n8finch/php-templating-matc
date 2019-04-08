@@ -1,10 +1,6 @@
 <?php
 require PUBLIC_DIR . '/controllers/GuzzlerController.php';
-// echo '<pre>';
-// var_dump($_SERVER);
-// var_dump($_POST);
-// echo '</pre>';
-// die();
+
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader, array());
 
@@ -24,9 +20,6 @@ switch ( $_SERVER['REQUEST_URI'] ) {
         
     case '/update':
         $guzzle_response = ( ! empty( $_POST ) ) ? $guzzler->update( $_POST ) : false;
-        echo '<pre>';
-        var_dump($guzzle_response);
-        echo '</pre>';
         echo $twig->render('update.twig', array( 'students' => $guzzle_response ));
         break;
         

@@ -19,4 +19,10 @@
         <button class="btn btn-primary mx-sm-3 mb-2" type="submit">Update Student</button>
     </form>
 
+    {% if students != false %}
+        <br/>
+        <h4>This record was updated:</h4>
+        {% include "student-table.twig" %}
+    {% endif %}
+
 {% endblock %}

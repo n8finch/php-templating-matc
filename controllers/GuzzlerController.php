@@ -113,23 +113,18 @@ class GuzzleController {
 
     public function update( $args ) {
         try
-        {
-            $id = 7;
-            $name = 'Eric Cartmen';
-            $email = 'eric@iKilledKenny.com';
-            
-            $options =  [
-                            'form_params' => 
-                            [
-                                'id'    => $id,
-                                'name'  => $name,
-                                'email' => $email
-                            ]
-                        ];
-            
-            $response = $this->client->request("PUT", $this->url, $options);
+        {            
+            $response = $this->client->request("PUT", $this->url . "?id={$args['student-id']}&name={$args['name']}&email={$args['email']}");
                     
             $response_body = $response->getBody();
+            if ( 200 === $response->getStatusCode() ) {
+                return [ 0 => [
+                    'id' => $args['student-id'],
+                    'name' => $args['name'],
+                    'email' => $args['email'],
+                    'created' => time()
+                ] ];
+            }
             return json_decode( $response_body );
         }
         catch (RequestException $ex)
