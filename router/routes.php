@@ -6,19 +6,19 @@ $twig = new \Twig\Environment($loader, array());
 
 switch ( $_SERVER['REQUEST_URI'] ) {
     case '/create':
-    # code...
-    break;
-    
+        echo $twig->render('create.twig', array('name' => 'Nate'));
+        break;
+        
     case '/read':
-    # code...
-    break;
-    
+        echo $twig->render('read.twig', array('name' => 'Nate'));
+        break;
+        
     case '/update':
-    # code...
-    break;
-    
+        echo $twig->render('update.twig', array('name' => 'Nate'));
+        break;
+        
     case '/delete':
-    # code...
+        echo $twig->render('delete.twig', array('name' => 'Nate'));
     break;
     
     default:

@@ -2,18 +2,22 @@
 <html>
     <head>
         {% block head %}
-            <link rel="stylesheet" href="style.css" />
+            
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link rel="stylesheet" href="style.css" />
+
             <title>{% block title %}{% endblock %} - REST API</title>
         {% endblock %}
     </head>
     <body>
-        {{ include('navbar.twig') }}
+        {% include('navbar.twig') %}
 
-        <div id="content">
+        <div id="content" class="container-fluid">
             {% block content %}{% endblock %}
         </div>
 
-        {{ include('footer.twig') }}            
+        {% include "student-table.twig" %}
+    
+        {% include('footer.twig') %}           
     </body>
 </html>

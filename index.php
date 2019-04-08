@@ -3,8 +3,6 @@ require_once("vendor/autoload.php");
 require_once("router/routes.php");
         
 
-
-
 // $client = new GuzzleHttp\Client();
 
 // $url = "http://restapi.local/api/student_service.php";
