@@ -30,7 +30,7 @@
             
         case "PUT":
             // PUT vars can be called in the $_GET global
-            $update_vars = $_GET;
+            $update_vars = $_POST;
             
             if (isset($update_vars['id']) && isset($update_vars['name']) && isset($update_vars['email'])) {
                 echo $student_manager->update($update_vars['id'], $update_vars['name'], $update_vars['email']);
@@ -42,8 +42,8 @@
             
         case "DELETE":
             // Delete
-            $delete_vars = $_GET;
-            
+            $delete_vars = $_REQUEST;
+
             if (isset($delete_vars['id'])) {
                 echo $student_manager->delete($delete_vars['id']);
             } else {

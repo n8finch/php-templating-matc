@@ -13,21 +13,26 @@ $guzzler = new GuzzleController();
 
 switch ( $_SERVER['REQUEST_URI'] ) {
     case '/create':
-    echo $twig->render('create.twig', array('name' => 'Nate'));
-    break;
+        $guzzle_response = ( ! empty( $_POST ) ) ? $guzzler->create( $_POST ) : false;
+        echo $twig->render('create.twig', array( 'students' => $guzzle_response ));
+        break;
     
     case '/read':
         $guzzle_response = ( array_key_exists( 'student-id', $_POST ) ) ? $guzzler->readone( $_POST['student-id'] ) : false;
         echo $twig->render('read.twig', array( 'students' => $guzzle_response ) );
         break;
         
-        case '/update':
-        echo $twig->render('update.twig', array('name' => 'Nate'));
+    case '/update':
+        $guzzle_response = ( ! empty( $_POST ) ) ? $guzzler->update( $_POST ) : false;
+        echo '<pre>';
+        var_dump($guzzle_response);
+        echo '</pre>';
+        echo $twig->render('update.twig', array( 'students' => $guzzle_response ));
         break;
         
     case '/delete':
         $guzzle_response = ( array_key_exists( 'student-id', $_POST ) ) ? $guzzler->delete( $_POST['student-id'] ) : false;
-        echo $twig->render('delete.twig', array('name' => 'Nate'));
+        echo $twig->render('delete.twig', array( 'students' => $guzzle_response ) );
     break;
     
     default:
