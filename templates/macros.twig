@@ -1,3 +1,7 @@
 {% macro method(value) %}
-    <input type="hidden" name="twig-method" value="{{ value|e }}" />
+    <input type="hidden" name="twig-method" value="{{ value }}" />
+{% endmacro %}
+
+{% macro csrf(value) %}
+    <input type="hidden" name="twig-csrf" value="{{ value }}" />
 {% endmacro %}

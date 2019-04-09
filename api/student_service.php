@@ -8,8 +8,8 @@
     switch ($http_verb) {
         case "POST":
             // Create
-            if (isset($_POST['name']) && isset($_POST['email'])) {
-                echo $student_manager->create($_POST['name'], $_POST['email']);
+            if (isset($_REQUEST['name']) && isset($_REQUEST['email'])) {
+                echo $student_manager->create($_REQUEST['name'], $_REQUEST['email']);
             } else {
                 throw new Exception("Invalid HTTP POST request parameters.");
             }
@@ -31,9 +31,7 @@
         case "PUT":
             // PUT vars can be called in the $_GET global
             $update_vars = $_REQUEST;
-
-            var_dump($update_vars);
-            
+                        
             if (isset($update_vars['id']) && isset($update_vars['name']) && isset($update_vars['email'])) {
                 echo $student_manager->update($update_vars['id'], $update_vars['name'], $update_vars['email']);
             } else {

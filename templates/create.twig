@@ -1,4 +1,7 @@
+{% import "macros.twig" as macros %}
 {% extends "base.twig" %}
+
+{% block title %}Create{% endblock %}
 
 {% block content %}
     <h1>Create</h1>
@@ -12,7 +15,10 @@
             <label class="sr-only" for="email">Email</label>
             <input class="form-control" id="email" name="email" placeholder="Email" type="email">
         </div>
-        {{ macros.method('post') }}
+        {{ macros.method('patch') }}
+        {% for item in students %}
+        {{ macros.csrf( item.csrf ) }}
+        {% endfor %}
         <button class="btn btn-primary mx-sm-3 mb-2" type="submit">Create Student</button>
     </form>
 
