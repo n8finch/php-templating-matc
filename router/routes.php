@@ -10,9 +10,13 @@ switch ($_SERVER['REQUEST_URI']) {
     case '/create':
         $guzzle_response = (! empty($_POST)) ? $guzzler->create($_POST) : false;
         
-        $guzzle_response[0]['csrf'] = (string)rand(999999999, 9999999999999);
+        // Add a fake CSRF token to add to the form submission, this is not handled in the controllers, currently.
+        $csrf = sha1( rand(99999999999, 9999999999999) );
 
-        echo $twig->render('create.twig', array( 'students' => $guzzle_response ));
+        echo $twig->render('create.twig', array( 
+            'students' => $guzzle_response,
+            'csrf' => $csrf
+        ));
         break;
     
     case '/read':
